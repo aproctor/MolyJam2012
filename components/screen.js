@@ -35,7 +35,6 @@ Crafty.c("ABExit", {
     this.x = ABGame.width - ABGame.grid_size;
     this.y = 0;
     
-    if(this.)
     this.color("#00AAFF");
     this.onHit('ABPlayer', function(){
         ABGame.nextScene();
