@@ -40,7 +40,9 @@ var ABGame = {
   }
 };
 
-
+/**
+ * On page load
+ */
 window.onload = (function() {
   Crafty.init(ABGame.width, ABGame.height);
   Crafty.load(["images/105.jpeg","images/hp.png"], function() {
