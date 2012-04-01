@@ -37,3 +37,23 @@ Crafty.scene("scene2", function() {
    Crafty.e("ABScreen");
    Crafty.e("ABExit");
 });
+
+Crafty.scene("scene3", function() {
+  /*
+   * Platforms
+   */
+  Crafty.e("ABPlatform");
+  Crafty.e("ABPlatform").attr({x: 225, y: ABGame.height - 2.5*ABGame.grid_size, w: 100});
+  Crafty.e("ABPlatform").attr({x: 25, y: ABGame.height - 8*ABGame.grid_size, w: 100});
+  Crafty.e("ABPlatform").attr({x: 225, y: ABGame.height - 12*ABGame.grid_size, w: 400});
+  /*
+   * Player
+   */
+  Crafty.e("ABPlayer");
+  
+  /*
+   * Screen
+   */
+   Crafty.e("ABScreen");
+   Crafty.e("ABExit");
+});

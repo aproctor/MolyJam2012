@@ -6,8 +6,8 @@ var ABGame = {
     hitboxes: false
   },
   
-  width: 1600,
-  height: 1300,
+  width: 750,
+  height: 600,
   grid_size: 25,
   
   pVelocity: 50,
@@ -16,6 +16,7 @@ var ABGame = {
   scenes: ['splash',
     'scene1', 
     'scene2',
+	'scene3',
     /* NEW SCENES HERE */
     'game_over'],
   
