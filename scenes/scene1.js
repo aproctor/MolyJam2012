@@ -61,5 +61,4 @@ Crafty.scene('scene1-5', function() {
     Crafty.e('ABPlatform').attr({ x: 250, y: 400, w: 275, h: 50});
     Crafty.e('ABPlatform').attr({ x: 250, y: 75, w: 275, h: 50});
     Crafty.e('ABPlatform').attr({ x: 250, y: 225, w: 275, h: 50});
-    Crafty.e('ABPlatform').attr({ x: 250, y: -75, w: 275, h: 50});
 });

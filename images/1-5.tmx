@@ -18,6 +18,5 @@
   <object x="250" y="400" width="275" height="50"/>
   <object x="250" y="75" width="275" height="50"/>
   <object x="250" y="225" width="275" height="50"/>
-  <object x="250" y="-75" width="275" height="50"/>
  </objectgroup>
 </map>
