@@ -10,12 +10,12 @@ var ABGame = {
   height: 750,
   grid_size: 25,
   
-  max_lives: 3,
-  cur_lives: 3,
+  max_lives: 1,
+  cur_lives: 1,
   
   curScene: 0,
   scenes: ['splash',
-    'scene1-1', 'scene1-2', 'scene1-3', 'scene1-4',
+    'scene1-1', 'scene1-2', 'scene1-3', 'scene1-4', 'scene1-5',
     /* NEW SCENES HERE */
     'game_over'],
     

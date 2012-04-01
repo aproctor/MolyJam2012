@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="30" height="30" tilewidth="25" tileheight="25">
+ <tileset firstgid="1" name="105" tilewidth="75" tileheight="75">
+  <image source="105.jpeg" width="75" height="75"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="30" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3XMREAAAjEMN6/aQ4TwJAY6NzUvhw0AQAAvrp4pGk2EDdyZxAOAAA=
+  </data>
+ </layer>
+ <objectgroup name="platforms" width="30" height="30">
+  <object x="-250" y="700" width="1325" height="50"/>
+  <object type="ABExit" x="50" y="-50" width="675" height="75"/>
+  <object type="ABPlayer" x="0" y="625" width="75" height="75"/>
+  <object x="0" y="-50" width="50" height="575"/>
+  <object x="725" y="-50" width="125" height="750"/>
+  <object x="250" y="575" width="275" height="50"/>
+  <object x="250" y="400" width="275" height="50"/>
+  <object x="250" y="75" width="275" height="50"/>
+  <object x="250" y="225" width="275" height="50"/>
+  <object x="250" y="-75" width="275" height="50"/>
+ </objectgroup>
+</map>
