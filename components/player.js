@@ -8,7 +8,7 @@ Crafty.c("ABPlayer", {
          this.h = 75;    // height
          this.color("#FF0000");
          
-         this.multiway(4, {LEFT_ARROW: 180, RIGHT_ARROW: 0 });
+         this.multiway(4, {LEFT_ARROW: 180, RIGHT_ARROW: 0, A: 180, D: 0});
          this.lives = ABGame.max_lives;
                   
          /*
@@ -114,7 +114,7 @@ Crafty.c("ABPlayerHealth", {
     this.y = 15;
     this.z = 100;
     
-    this.color("#00FF00")
+    this.color("#D5BD73")
     
     var border = 2;
     Crafty.e("2D, DOM, Color").attr({w: this.w+2*border, h: this.h+2*border, x: this.x-border, y: this.y-border, z: 1}).color("#000000");

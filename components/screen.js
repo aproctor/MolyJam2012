@@ -8,10 +8,7 @@ Crafty.c("ABScreen", {
          this.h = ABGame.height;
          this.x = 0;
          this.y = 0;
-         
-         if(ABGame.DEBUG.ALL === true || ABGame.DEBUG.ABScreen === true) {
-           this.color("#AA00FF");
-         }
+         this.z = -1;
      }
 });
 
@@ -35,7 +32,9 @@ Crafty.c("ABExit", {
     this.x = ABGame.width - ABGame.grid_size;
     this.y = 0;
     
-    this.color("#00AAFF");
+    if(ABGame.DEBUG.ALL) {
+      this.color("#00AAFF");
+    }
     this.onHit('ABPlayer', function(){
         ABGame.nextScene();
     });

@@ -51,6 +51,7 @@ var ABGame = {
  */
 window.onload = (function() {
   Crafty.init(ABGame.width, ABGame.height);
+  Crafty.background('#FFF7AB');
   Crafty.load(["images/105.jpeg","images/hp.png", "images/tile.jpg"], function() {
     Crafty.sprite(75, "images/105.jpeg", {
       playerSpr: [0,0]
