@@ -7,15 +7,14 @@ Crafty.c("ABPlayer", {
          this.w = 75;    // width
          this.h = 75;    // height
          this.color("#FF0000");
-         this.x = 10;
-         this.y = ABGame.height - this.h - ABGame.grid_size;
+         
          this.multiway(4, {LEFT_ARROW: 180, RIGHT_ARROW: 0 });
+         this.lives = ABGame.max_lives;
                   
          /*
           * Player state
           */
          this.max_hp = 1000.0;
-         this.cur_hp = this.max_hp;
          
          this.health_bar = Crafty.e("ABPlayerHealth");
          
@@ -28,20 +27,29 @@ Crafty.c("ABPlayer", {
         
          this.bind("EnterFrame", this._playerEnterKeyFrame);
          
-         this.bind("Jumped", this.flipp);
+         this.bind("JumpEnd", this.flipp);
          
          this.origin(this.w / 2, this.h / 2);
          
          this.animate('SandTick', 0, 0, 10);
          //this.animate('SandTick',30,0, -1);
+         
+         this.spawn();
+         
+         this.onHit('ABPlatform', function() {
+           this.x -= this._movement.x;
+           this.y -= this._movement.y;
+         });
     },
 
     /* 
      *  Player entity update loop
      */
     _playerEnterKeyFrame: function () {
-            
-      this.harm(this.sandTickRate);
+      
+      if(this._jumping == false) {      
+         this.harm(this.sandTickRate);
+      }
       
       
       var hpRatio = this.cur_hp / this.max_hp;
@@ -51,7 +59,7 @@ Crafty.c("ABPlayer", {
      this.__coord[0] = Math.round(hpRatio * 10) * frameSize;
            
       if(this.cur_hp <= 0) {
-        ABGame.gameOver();
+        this.kill();
       }
     },
      
@@ -66,6 +74,23 @@ Crafty.c("ABPlayer", {
        this.cur_hp = (this.max_hp - this.cur_hp);
        
        //this.rotation = (this.flipped)?180:0;
+     },
+     
+     kill: function() {
+       console.log('kill');
+       ABGame.cur_lives -= 1;
+       if(ABGame.cur_lives < 0) {
+         ABGame.gameOver();
+         ABGame.cur_lives = ABGame.max_lives;
+       } else {
+         ABGame.restartScene();
+       }
+     },
+     
+     spawn: function() {
+      this.x = 10;
+      this.y = ABGame.height - this.h - ABGame.grid_size;
+      this.cur_hp = this.max_hp * 0.6;
      },
      
      
@@ -116,11 +141,12 @@ Crafty.c("ABPlayerHealth", {
  */
 Crafty.c("Jumper", {
     init: function() {
+      this.addComponent('Tween');
       this.requires("Keyboard");
       this.jumpSpeed = 6;
       this._jumping = false;
       this._jy = 0;
-      this.hangtime = 500;
+      this.hangtime = 25;
       this._anti = null;
     },
      
@@ -142,6 +168,12 @@ Crafty.c("Jumper", {
     },
     
     _jumperEnterKeyFrame: function () {
+      if(--this._jumpframes <= 0) {
+        this.rotation = 0;
+        this.stopJump();
+        return;
+      }
+      
 			if (this._jumping === true) {
 				this._jy = this.jumpSpeed;
 				this.y -= this._jy;
@@ -149,6 +181,8 @@ Crafty.c("Jumper", {
   			this._jy = 0;
   			return;
   		}
+  		
+  		
 
       /* Project into the future to see if this jump will hit a platform */
   		var pos = this.pos();
@@ -166,7 +200,7 @@ Crafty.c("Jumper", {
   			//check for an intersection directly below the player
   			if (obj !== this && obj.has(this._anti) && obj.intersect(pos)) {
   				hit = obj;
-  				hit.color("#FFFFFF")
+  				//hit.color("#FFFFFF")
   				break;
   			}
   		}
@@ -178,16 +212,22 @@ Crafty.c("Jumper", {
     
     jump: function() {
       if(this._falling === false && this._jumping === false) {
+        this._jumpframes = this.hangtime;
         this.trigger('Jumped');
         this._jumping = true;
         var self = this;
-        setTimeout(function(){self.stopJump();}, this.hangtime);
+        
+        this.tween({rotation: 180}, this.hangtime);
       }
     },
     
     stopJump: function() {
-      this._jumping = false;
-      this._gy = 0;
+      if(this._jumping === true) {
+        this._jumping = false;
+        this.trigger('JumpEnd');
+        this._gy = 0;
+      }
+      
     },
     
 		toString: function() {

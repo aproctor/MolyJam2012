@@ -6,11 +6,12 @@ var ABGame = {
     hitboxes: false
   },
   
-  width: 1600,
-  height: 1300,
+  width: 750,
+  height: 750,
   grid_size: 25,
   
-  pVelocity: 50,
+  max_lives: 3,
+  cur_lives: 3,
   
   curScene: 0,
   scenes: ['splash',
@@ -18,6 +19,8 @@ var ABGame = {
     'scene2',
     /* NEW SCENES HERE */
     'game_over'],
+    
+  tile: 'images/tile.jpg',
   
   restart: function() {
     this.curScene = 0;
@@ -29,6 +32,10 @@ var ABGame = {
     if(this.curScene < this.scenes.length) {
       Crafty.scene(this.scenes[this.curScene]);
     }
+  },
+  
+  restartScene: function() {
+    Crafty.scene(this.scenes[this.curScene]);
   },
   
   gameOver: function() {
@@ -45,7 +52,7 @@ var ABGame = {
  */
 window.onload = (function() {
   Crafty.init(ABGame.width, ABGame.height);
-  Crafty.load(["images/105.jpeg","images/hp.png"], function() {
+  Crafty.load(["images/105.jpeg","images/hp.png", "images/tile.jpg"], function() {
     Crafty.sprite(75, "images/105.jpeg", {
       playerSpr: [0,0]
     });

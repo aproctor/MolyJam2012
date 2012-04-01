@@ -17,13 +17,13 @@ Crafty.c("ABScreen", {
 
 Crafty.c("ABPlatform", {
   init: function() {
-    this.addComponent("2D, DOM, Color, Collision")
+    this.addComponent("2D, DOM, Image, Collision")
     this.w = ABGame.width;
     this.h = ABGame.grid_size;
     this.x = 0;
     this.y = ABGame.height - ABGame.grid_size;
     
-    this.color("#00AA00");
+    this.image(ABGame.tile, "repeat");
   }
 });
 
