@@ -9,11 +9,12 @@
   </data>
  </layer>
  <objectgroup name="platforms" width="30" height="30">
-  <object x="0" y="700" width="800" height="50"/>
+  <object x="0" y="700" width="775" height="50"/>
   <object x="225" y="650" width="400" height="50"/>
-  <object type="ABExit" x="725" y="625" width="75" height="75"/>
+  <object type="ABExit" x="700" y="625" width="75" height="75"/>
   <object type="ABPlayer" x="50" y="625" width="75" height="75"/>
   <object x="0" y="-50" width="50" height="750"/>
   <object x="50" y="-50" width="750" height="50"/>
+  <object x="725" y="0" width="75" height="475"/>
  </objectgroup>
 </map>

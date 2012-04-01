@@ -217,7 +217,8 @@ Crafty.c("Jumper", {
         this._jumping = true;
         var self = this;
         
-        this.tween({rotation: 180}, this.hangtime);
+        var factor = (this._movement && this._movement.x < 0)? -1 : 1;
+        this.tween({rotation: 180*factor}, this.hangtime);
       }
     },
     

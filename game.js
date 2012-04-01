@@ -15,8 +15,7 @@ var ABGame = {
   
   curScene: 0,
   scenes: ['splash',
-    'scene1', 
-    'scene2',
+    'scene1-1', 'scene1-2', 'scene1-3', 'scene1-4',
     /* NEW SCENES HERE */
     'game_over'],
     
